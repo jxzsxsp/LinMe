@@ -1,4 +1,5 @@
 import { AppRegistry } from 'react-native';
-import App from './src/App';
+import Pages from './src';
 
-AppRegistry.registerComponent('LinMe', () => App);
+//启动
+AppRegistry.registerComponent('LinMe', () => Pages);
