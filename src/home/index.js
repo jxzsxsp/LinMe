@@ -18,6 +18,9 @@ import request from '../utils/request'
 import px from '../utils/px'
 import Swiper from 'react-native-swiper'
 import { Module } from './floor_modules'
+import { log, logWarm, logErr } from '../utils/log'
+import ShareView, { SHARETYPE } from '../component/ShareView'
+import { DialogModal } from '../component/ModalView'
 
 const deviceWidth = Dimensions.get('window').width;
 const util_cools = {
@@ -97,6 +100,8 @@ class MyBanner extends React.Component {
      * @param {*} shareImg
      */
     getDetail(type, context, title, shareImg) {
+        log(type, context, title, shareImg)
+
         type == 1 && this.props.navigation.navigate('Goods', {
             sku: context
         });
@@ -107,6 +112,8 @@ class MyBanner extends React.Component {
         });
     }
     goPage(item) {
+        log("goPage")
+        log(JSON.stringify(item))
         if (item.contextType == "sku") {
             this.props.navigation.navigate('Goods', {
                 id: item.prodId,
@@ -436,7 +443,10 @@ class GoodItem extends React.Component {
         if (pp.show != this.props.show) this.shouldUpdate = true;
     }
     getDetail(goods) {
-        this.props.navigation.navigate('DetailPage', {
+        log("getGoodsDetail")
+        log(JSON.stringify(goods))
+
+        this.props.navigation.navigate('Goods', {
             id: goods.sku ? '' : goods.id,
             sku: goods.sku
         });
@@ -932,6 +942,13 @@ export default class extends React.Component {
                     />
                 </View>
 
+                {this.state.showTop && <TouchableOpacity onPress={() => this.toTop()}>
+                    <Image style={styles.toBtn}
+                           source={{ uri: require("../images/icon-to-top") }} />
+                </TouchableOpacity>}
+                <ShareView ref='shareView' types={[SHARETYPE.WEIXIN, SHARETYPE.PENGYOUQUAN, SHARETYPE.LIANJIE, SHARETYPE.ERWEIMA]} />
+                <DialogModal ref="dialog" />
+
             </View>
         )
     }
@@ -1118,6 +1135,9 @@ export default class extends React.Component {
      * @param {*} item
      */
     goOtherPage(item) {
+        log("goOtherPage")
+        log(JSON.stringify(item))
+
         if (item.urlType == "sku" && item.prodId) {
             this.props.navigation.navigate('Goods', {
                 id: item.prodId

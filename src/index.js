@@ -14,6 +14,14 @@ import Home from './home/index'
 import Products from './home/products'
 import Shop_Cart from './home/shop_cart'
 import My from './home/my'
+import Goods from './detail/goods'
+import Browser from './home/browser'
+import Setting from './center/setting'
+import Debugs from './debug/index'
+import Log from './debug/log'
+import Login from './account/login'
+import AddressList from './center/addressList'
+import AddressEdit from './center/addressEdit'
 
 //创建tab页的顶部样式
 const styles = StyleSheet.create({
@@ -104,6 +112,30 @@ const Tabs = Navigation.TabNavigator({
 const Pages = Navigation.StackNavigator({
     'Tabs': {
         screen: Tabs
+    },
+    'Goods': {
+        screen: Goods
+    },
+    'Browser': {
+        screen: Browser
+    },
+    'Setting': {
+        screen: Setting
+    },
+    'Debugs': {
+        screen: Debugs
+    },
+    'Log': {
+        screen: Log
+    },
+    'Login': {
+        screen: Login
+    },
+    'AddressList': {
+        screen: AddressList
+    },
+    'AddressEdit':{
+        screen: AddressEdit
     }
 }, {
     //这里做了一个页面跳转的动画

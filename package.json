@@ -15,7 +15,9 @@
     "react-native": "0.55.4",
     "react-native-fast-image": "^4.0.14",
     "react-native-root-toast": "^3.0.1",
+    "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-swiper": "^1.5.13",
+    "react-native-wechat": "^1.9.9",
     "react-navigation": "^2.2.5",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
