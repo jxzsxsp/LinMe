@@ -17,6 +17,7 @@ import {
 import request from '../utils/request'
 import px from '../utils/px'
 import Swiper from 'react-native-swiper'
+import { Module } from './floor_modules'
 
 const deviceWidth = Dimensions.get('window').width;
 const util_cools = {
